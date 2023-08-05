@@ -21,7 +21,7 @@ RM = rm -rf
 SRC = main.c utils_1.c utils_2.c utils_3.c utils_4.c map_initialization.c \
 	  map_parsing.c map_display.c key_hook.c \
 	  
-OBJ = $(SRC: .c=.o)
+OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
