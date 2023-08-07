@@ -6,7 +6,7 @@
 /*   By: yachen <yachen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 11:17:22 by yachen            #+#    #+#             */
-/*   Updated: 2023/08/05 14:06:31 by yachen           ###   ########.fr       */
+/*   Updated: 2023/08/07 16:48:23 by yachen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ static void	ft_xk_a(t_map_info *map_info, int *mv)
 	t_point	p;
 	char	**map;
 
-	(*mv)++;
 	map = map_info->map;
 	find_p(map, &p);
 	if (map[p.y][p.x - 1] == 'C' || map[p.y][p.x - 1] == '0')
 	{
+		ft_printf("%d\n", ++(*mv));
 		draw_img(map_info, map_info->ply_left, p.y, p.x - 1);
 		draw_img(map_info, map_info->floor, p.y, p.x);
 		map[p.y][p.x] = '0';
@@ -50,7 +50,7 @@ static void	ft_xk_a(t_map_info *map_info, int *mv)
 		draw_img(map_info, map_info->ply_left, p.y, p.x - 1);
 		draw_img(map_info, map_info->floor, p.y, p.x);
 		ft_clean(map_info);
-		printf("%d\n", *mv);
+		ft_printf("%d\n", ++(*mv));
 		ft_printf("Congratulations you have collected all coins!");
 		exit(0);
 	}
@@ -61,11 +61,11 @@ static void	ft_xk_d(t_map_info *map_info, int *mv)
 	t_point	p;
 	char	**map;
 
-	(*mv)++;
 	map = map_info->map;
 	find_p(map_info->map, &p);
 	if (map[p.y][p.x + 1] == 'C' || map[p.y][p.x + 1] == '0')
 	{
+		printf("%d\n", ++(*mv));
 		draw_img(map_info, map_info->ply_right, p.y, p.x + 1);
 		draw_img(map_info, map_info->floor, p.y, p.x);
 		map[p.y][p.x] = '0';
@@ -76,7 +76,7 @@ static void	ft_xk_d(t_map_info *map_info, int *mv)
 		draw_img(map_info, map_info->ply_right, p.y, p.x + 1);
 		draw_img(map_info, map_info->floor, p.y, p.x);
 		ft_clean(map_info);
-		printf("%d\n", *mv);
+		printf("%d\n", ++(*mv));
 		ft_printf("Congratulations you have collected all coins!");
 		exit(0);
 	}
@@ -87,11 +87,11 @@ static void	ft_xk_w(t_map_info *map_info, int *mv)
 	t_point	p;
 	char	**map;
 
-	(*mv)++;
 	map = map_info->map;
 	find_p(map_info->map, &p);
 	if (map[p.y - 1][p.x] == 'C' || map[p.y - 1][p.x] == '0')
 	{
+		printf("%d\n", ++(*mv));
 		draw_img(map_info, map_info->ply_back, p.y - 1, p.x);
 		draw_img(map_info, map_info->floor, p.y, p.x);
 		map[p.y][p.x] = '0';
@@ -102,7 +102,7 @@ static void	ft_xk_w(t_map_info *map_info, int *mv)
 		draw_img(map_info, map_info->ply_back, p.y - 1, p.x);
 		draw_img(map_info, map_info->floor, p.y, p.x);
 		ft_clean(map_info);
-		printf("%d\n", *mv);
+		printf("%d\n", ++(*mv));
 		ft_printf("Congratulations you have collected all coins!");
 		exit(0);
 	}
@@ -113,11 +113,11 @@ static void	ft_xk_s(t_map_info *map_info, int *mv)
 	t_point	p;
 	char	**map;
 
-	(*mv)++;
 	map = map_info->map;
 	find_p(map_info->map, &p);
 	if (map[p.y + 1][p.x] == 'C' || map[p.y + 1][p.x] == '0')
 	{
+		printf("%d\n", ++(*mv));
 		draw_img(map_info, map_info->ply_front, p.y + 1, p.x);
 		draw_img(map_info, map_info->floor, p.y, p.x);
 		map[p.y][p.x] = '0';
@@ -128,7 +128,7 @@ static void	ft_xk_s(t_map_info *map_info, int *mv)
 		draw_img(map_info, map_info->ply_front, p.y + 1, p.x);
 		draw_img(map_info, map_info->floor, p.y, p.x);
 		ft_clean(map_info);
-		printf("%d\n", *mv);
+		printf("%d\n", ++(*mv));
 		ft_printf("Congratulations you have collected all coins!");
 		exit(0);
 	}
@@ -151,7 +151,5 @@ int	key_hook(int keysym, t_map_info *map_info)
 		ft_xk_w(map_info, &mv);
 	else if (keysym == XK_s)
 		ft_xk_s(map_info, &mv);
-	if (mv > 0)
-		printf("%d\n", mv);
 	return (0);
 }

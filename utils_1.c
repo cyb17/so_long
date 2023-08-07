@@ -6,7 +6,7 @@
 /*   By: yachen <yachen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 16:21:51 by yachen            #+#    #+#             */
-/*   Updated: 2023/08/05 14:03:39 by yachen           ###   ########.fr       */
+/*   Updated: 2023/08/07 16:22:57 by yachen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,11 @@ int	count_str(char *argv)
 	i = 0;
 	fd = 0;
 	fd = open(argv, O_RDONLY);
+	if (fd == -1)
+	{
+		ft_printf("Error\n: Opening file failed");
+		exit(1);
+	}
 	while (1)
 	{
 		line = get_next_line(fd);
@@ -79,9 +84,9 @@ char	**make_map(char **argv)
 	i = 0;
 	fd = 0;
 	fd = open(argv[1], O_RDONLY);
-	if (fd == -1)
+	if (fd == -1 || check_map_name(argv) == 0)
 	{
-		perror("Error\n: Opening file failed");
+		ft_printf("Error\n: Opening file failed or wrong map extension");
 		exit(1);
 	}
 	map = (char **)malloc(sizeof(char *) * (count_str(argv[1]) + 1));
@@ -112,14 +117,14 @@ t_point	find_map_size(char **map)
 	if (!map)
 		return (size);
 	i = 0;
-	x = ft_strlen(map[0]);
+	x = ft_strlen2(map[0]);
 	while (map[i])
 	{
-		if (ft_strlen(map[i]) != x)
+		if (ft_strlen2(map[i]) != x)
 			return (size);
 		i++;
 	}
-	size.x = x - 1;
+	size.x = x;
 	size.y = i;
 	if (size.y < 3 || size.x < 5)
 	{

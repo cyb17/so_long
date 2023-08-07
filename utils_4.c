@@ -6,11 +6,22 @@
 /*   By: yachen <yachen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 12:37:55 by yachen            #+#    #+#             */
-/*   Updated: 2023/08/05 16:17:16 by yachen           ###   ########.fr       */
+/*   Updated: 2023/08/07 16:24:22 by yachen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	check_map_name(char **argv)
+{
+	size_t	i;
+
+	i = ft_strlen(argv[1]);
+	if (argv[1][i - 1] == 'r' && argv[1][i - 2] == 'e'
+		&& argv[1][i - 3] == 'b' && argv[1][i - 4] == '.')
+		return (1);
+	return (0);
+}
 
 t_data	*load_img(void *mlx, char *path)
 {

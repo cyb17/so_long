@@ -6,7 +6,7 @@
 #    By: yachen <yachen@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/18 16:18:04 by yachen            #+#    #+#              #
-#    Updated: 2023/08/05 16:18:52 by yachen           ###   ########.fr        #
+#    Updated: 2023/08/07 16:09:14 by yachen           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,8 @@ CFLAGS = -Wall -Wextra -Werror -lm -g3
 
 RM = rm -rf
 
-SRC = main.c utils_1.c utils_2.c utils_3.c utils_4.c map_initialization.c \
-	  map_parsing.c map_display.c key_hook.c \
+SRC = main.c utils_1.c utils_2.c utils_3.c utils_4.c utils_5.c \
+	  map_initialization.c map_parsing.c map_display.c key_hook.c \
 	  
 OBJ = $(SRC:.c=.o)
 

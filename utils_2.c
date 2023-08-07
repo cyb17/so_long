@@ -6,7 +6,7 @@
 /*   By: yachen <yachen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 11:57:14 by yachen            #+#    #+#             */
-/*   Updated: 2023/08/05 16:19:41 by yachen           ###   ########.fr       */
+/*   Updated: 2023/08/07 15:36:18 by yachen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,7 @@ void	ft_check_content(char **map)
 		{
 			if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] != 'P'
 			&& map[i][j] != 'E' && map[i][j] != 'C' && map[i][j] != '\n')
-			{
-				free_tab(map);
-				perror("Error\n: Map content is not valid");
-				exit(1);
-			}
+				ft_error2(map);
 			j++;
 		}
 		i++;

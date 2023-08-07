@@ -6,7 +6,7 @@
 /*   By: yachen <yachen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 12:01:18 by yachen            #+#    #+#             */
-/*   Updated: 2023/08/05 14:04:25 by yachen           ###   ########.fr       */
+/*   Updated: 2023/08/07 13:31:06 by yachen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,14 @@ int	ft_check_wall(char **map, t_point size)
 void	ft_error2(char **map)
 {
 	free_tab(map);
-	perror("Error\n: Map content is not valid");
+	ft_printf("Error\n: Map content is not valid");
 	exit(1);
 }
 
 void	ft_error1(char **map)
 {
 	free_tab(map);
-	perror("Error\n: Map size is not valid");
+	ft_printf("Error\n: Map size is not valid");
 	exit(1);
 }
 

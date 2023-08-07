@@ -6,7 +6,7 @@
 /*   By: yachen <yachen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:26:19 by yachen            #+#    #+#             */
-/*   Updated: 2023/08/05 14:02:59 by yachen           ###   ########.fr       */
+/*   Updated: 2023/08/07 15:54:44 by yachen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void	map_parsing(char **argv)
 
 	map = make_map(argv);
 	size = find_map_size(map);
+	if (size.x == 0 || size.y == 0)
+		ft_error1(map);
 	ft_check_content(map);
 	check_content(map);
 	find_p(map, &begin);
-	if (size.x == 0 || size.y == 0)
-		ft_error1(map);
 	map_copie = make_map(argv);
 	check_coin(map_copie, size, begin.y, begin.x);
 	if (check_exit(map, size, begin.y, begin.x) == 0
