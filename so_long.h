@@ -6,7 +6,7 @@
 /*   By: yachen <yachen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 16:55:12 by yachen            #+#    #+#             */
-/*   Updated: 2023/08/07 16:08:32 by yachen           ###   ########.fr       */
+/*   Updated: 2023/08/08 15:49:13 by yachen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,8 @@ typedef struct s_content
 typedef struct s_data
 {
 	void	*img;
-	char	*adr;
 	int		width;
 	int		height;
-	int		bpp;
-	int		l;
-	int		edn;
 }			t_data;
 
 typedef struct s_map_info
@@ -88,11 +84,13 @@ void		ft_init(t_content *cnt);
 //utils 4
 int			check_map_name(char **argv);
 t_data		*load_img(void *mlx, char *path);
-t_map_info	*ft_clean(t_map_info *map_info);
 void		draw_img(t_map_info *map_info, t_data *img, int i, int j);
 void		load_map(t_map_info *map_info);
 // utils 5
 int			ft_strlen2(char *str);
+void		ft_clean1(t_map_info *map_info);
+void		ft_clean2(t_map_info *map_info);
+t_map_info	*ft_clean(t_map_info *map_info);
 
 void		map_parsing(char **argv);
 t_map_info	*map_init(char **argv);

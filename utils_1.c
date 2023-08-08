@@ -6,7 +6,7 @@
 /*   By: yachen <yachen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 16:21:51 by yachen            #+#    #+#             */
-/*   Updated: 2023/08/07 16:22:57 by yachen           ###   ########.fr       */
+/*   Updated: 2023/08/08 15:12:58 by yachen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int	count_str(char *argv)
 		i++;
 		free(line);
 	}
+	close(fd);
 	return (i);
 }
 
@@ -100,6 +101,7 @@ char	**make_map(char **argv)
 		i++;
 	}
 	map[i] = NULL;
+	close(fd);
 	return (map);
 }
 

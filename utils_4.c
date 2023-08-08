@@ -6,7 +6,7 @@
 /*   By: yachen <yachen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 12:37:55 by yachen            #+#    #+#             */
-/*   Updated: 2023/08/07 16:24:22 by yachen           ###   ########.fr       */
+/*   Updated: 2023/08/08 15:57:48 by yachen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,38 +29,16 @@ t_data	*load_img(void *mlx, char *path)
 
 	if (!mlx)
 		return (NULL);
-	img = malloc(sizeof(t_data));
+	img = (t_data *)malloc(sizeof(t_data));
 	if (!img)
 		return (NULL);
 	img->img = mlx_xpm_file_to_image(mlx, path, &img->width, &img->height);
-	img->adr = mlx_get_data_addr(img->img, &img->bpp, &img->l, &img->edn);
+	if (img->img == NULL)
+	{
+		free(img);
+		return (NULL);
+	}
 	return (img);
-}
-
-t_map_info	*ft_clean(t_map_info *map_info)
-{
-	mlx_destroy_image(map_info->mlx, map_info->wall->img);
-	mlx_destroy_image(map_info->mlx, map_info->ply_back->img);
-	mlx_destroy_image(map_info->mlx, map_info->ply_front->img);
-	mlx_destroy_image(map_info->mlx, map_info->ply_left->img);
-	mlx_destroy_image(map_info->mlx, map_info->ply_right->img);
-	mlx_destroy_image(map_info->mlx, map_info->coin->img);
-	mlx_destroy_image(map_info->mlx, map_info->floor->img);
-	mlx_destroy_image(map_info->mlx, map_info->exit->img);
-	free(map_info->wall);
-	free(map_info->ply_back);
-	free(map_info->ply_front);
-	free(map_info->ply_left);
-	free(map_info->ply_right);
-	free(map_info->coin);
-	free(map_info->floor);
-	free(map_info->exit);
-	mlx_destroy_window(map_info->mlx, map_info->mlx_w);
-	mlx_destroy_display(map_info->mlx);
-	free(map_info->mlx);
-	free_tab(map_info->map);
-	free(map_info);
-	return (NULL);
 }
 
 void	draw_img(t_map_info *map_info, t_data *img, int i, int j)
